@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SubmissionFundamentalAplikasiAndroid</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="search_hint">Masukkan kata</string>
+</resources>
