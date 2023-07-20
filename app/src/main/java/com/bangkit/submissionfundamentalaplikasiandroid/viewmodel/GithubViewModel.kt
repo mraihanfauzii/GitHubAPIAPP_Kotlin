@@ -1,11 +1,11 @@
-package com.bangkit.submissionfundamentalaplikasiandroid
+package com.bangkit.submissionfundamentalaplikasiandroid.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*
 import com.bangkit.submissionfundamentalaplikasiandroid.api.RetrofitClient
 import com.bangkit.submissionfundamentalaplikasiandroid.model.User
 import com.bangkit.submissionfundamentalaplikasiandroid.model.UserResponse
-import com.bangkit.submissionfundamentalaplikasiandroid.setting.Setting
+import com.bangkit.submissionfundamentalaplikasiandroid.utils.Setting
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +33,7 @@ class GithubViewModel(private val preferences: Setting) : ViewModel() {
             })
     }
 
-    fun getSearhUser(): LiveData<ArrayList<User>> {
+    fun getSearchUser(): LiveData<ArrayList<User>> {
         return listUsers
     }
 

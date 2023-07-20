@@ -1,11 +1,13 @@
-package com.bangkit.submissionfundamentalaplikasiandroid.detailuser
+package com.bangkit.submissionfundamentalaplikasiandroid.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.submissionfundamentalaplikasiandroid.DetailUserFragmentAdapter
+import com.bangkit.submissionfundamentalaplikasiandroid.R
+import com.bangkit.submissionfundamentalaplikasiandroid.adapter.DetailUserFragmentAdapter
 import com.bangkit.submissionfundamentalaplikasiandroid.databinding.ActivityDetailUserBinding
+import com.bangkit.submissionfundamentalaplikasiandroid.viewmodel.DetailUserViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.CoroutineScope
@@ -26,22 +28,20 @@ class DetailUserActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         val id = intent.getIntExtra(EXTRA_ID, 0)
-        val avatarUrl = intent.getStringExtra(EXTRA_PROFILEPICTURE)
+        val avatarUrl = intent.getStringExtra(EXTRA_PROFILE_PICTURE)
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
         showLoading(true)
 
-        viewModel = ViewModelProvider(this).get(
-            DetailUserViewModel::class.java
-        )
+        viewModel = ViewModelProvider(this)[DetailUserViewModel::class.java]
         viewModel.setUserDetail(username.toString())
         viewModel.getUserDetail().observe(this) {
             if (it != null) {
                 binding.apply {
                     tvUserName.text = it.name
                     tvUserUsername.text = it.login
-                    tvUserFollowers.text = "${it.followers} Followers"
-                    tvUserFollowing.text = "${it.following} Following"
+                    tvUserFollowers.text = resources.getString(R.string.followers_count, it.followers)
+                    tvUserFollowing.text = resources.getString(R.string.following_count, it.following)
                     Glide.with(this@DetailUserActivity)
                         .load(it.avatar_url)
                         .centerCrop()
@@ -87,8 +87,8 @@ class DetailUserActivity : AppCompatActivity() {
             ViewPager.adapter = viewPagerAdapter
             TabLayoutMediator(TabLayout, ViewPager) { tab, position ->
                 when (position) {
-                    0 -> tab.text = "Followers"
-                    1 -> tab.text = "Following"
+                    0 -> tab.text = getString(R.string.followers)
+                    1 -> tab.text = getString(R.string.following)
                 }
             }.attach()
         }
@@ -101,6 +101,6 @@ class DetailUserActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_USERNAME = "extra_username"
         const val EXTRA_ID = "extra_id"
-        const val EXTRA_PROFILEPICTURE = "extra_avatar"
+        const val EXTRA_PROFILE_PICTURE = "extra_avatar"
     }
 }

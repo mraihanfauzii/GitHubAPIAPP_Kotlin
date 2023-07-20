@@ -1,10 +1,13 @@
-package com.bangkit.submissionfundamentalaplikasiandroid.setting
+package com.bangkit.submissionfundamentalaplikasiandroid.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
+import com.bangkit.submissionfundamentalaplikasiandroid.R
 import com.bangkit.submissionfundamentalaplikasiandroid.databinding.ActivitySettingBinding
+import com.bangkit.submissionfundamentalaplikasiandroid.utils.Setting
+import com.bangkit.submissionfundamentalaplikasiandroid.viewmodel.SettingViewModel
 
 class SettingActivity : AppCompatActivity() {
 
@@ -19,14 +22,14 @@ class SettingActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this,
             SettingViewModel.Factory(Setting(this))
-        ).get(SettingViewModel::class.java)
+        )[SettingViewModel::class.java]
 
         viewModel.getSetting().observe(this) {
             if (it) {
-                binding.changeTheme.text = "Dark Mode"
+                binding.changeTheme.text = getString(R.string.dark_mode)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
-                binding.changeTheme.text = "Light Mode"
+                binding.changeTheme.text = getString(R.string.light_mode)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
             binding.changeTheme.isChecked = it

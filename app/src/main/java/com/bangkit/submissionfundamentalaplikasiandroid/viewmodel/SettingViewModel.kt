@@ -1,9 +1,10 @@
-package com.bangkit.submissionfundamentalaplikasiandroid.setting
+package com.bangkit.submissionfundamentalaplikasiandroid.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.bangkit.submissionfundamentalaplikasiandroid.utils.Setting
 import kotlinx.coroutines.launch
 
 class SettingViewModel(private val preferences: Setting) : ViewModel() {

@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalaplikasiandroid
+package com.bangkit.submissionfundamentalaplikasiandroid.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*
@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowViewModel() : ViewModel() {
+class FollowViewModel : ViewModel() {
     val userListFollowers = MutableLiveData<ArrayList<User>>()
     val userListFollowing = MutableLiveData<ArrayList<User>>()
 

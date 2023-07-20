@@ -2,4 +2,21 @@
     <string name="app_name">SubmissionFundamentalAplikasiAndroid</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="search_hint">Masukkan kata</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="submission_akhir_android_fundamental_dicoding">Submission Akhir - Android Fundamental Dicoding</string>
+    <string name="dibuat_oleh">Dibuat oleh :</string>
+    <string name="muhammad_raihan_fauzi">Muhammad Raihan Fauzi</string>
+    <string name="muhammad_raihan_fauzi_gmail_com">muhammad.raihan.fauzi@gmail.com</string>
+    <string name="data_tidak_ditemukan">Data Tidak Ditemukan</string>
+    <string name="light_theme">Light Theme</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="theme">theme</string>
+    <string name="favorite">Favorite</string>
+    <string name="about">About</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="followers_count">%1$d Followers</string>
+    <string name="following_count">%1$d Following</string>
+    <string name="githubapiapp">GithubAPIApp</string>
 </resources>

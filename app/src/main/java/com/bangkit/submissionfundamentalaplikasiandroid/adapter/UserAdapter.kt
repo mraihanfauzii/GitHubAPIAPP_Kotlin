@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalaplikasiandroid
+package com.bangkit.submissionfundamentalaplikasiandroid.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,7 +22,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class UserViewHolder(val binding: ItemUserBinding) :
+    inner class UserViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
             binding.root.setOnClickListener {

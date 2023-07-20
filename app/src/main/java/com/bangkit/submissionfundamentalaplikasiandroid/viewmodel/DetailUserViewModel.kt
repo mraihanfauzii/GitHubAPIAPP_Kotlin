@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalaplikasiandroid.detailuser
+package com.bangkit.submissionfundamentalaplikasiandroid.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -22,7 +22,7 @@ class DetailUserViewModel(application: Application) : AndroidViewModel(applicati
     private var userDB: UserDatabase?
 
     val _user = MutableLiveData<DetailUser>()
-    val user: LiveData<DetailUser> = _user
+    private val user: LiveData<DetailUser> = _user
 
     init {
         userDB = UserDatabase.getDatabase(application)
@@ -52,7 +52,7 @@ class DetailUserViewModel(application: Application) : AndroidViewModel(applicati
 
     fun addToListFavorite(username: String, id: Int, avatarUrl: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            var user = UserFavorite(
+            val user = UserFavorite(
                 username,
                 id,
                 avatarUrl

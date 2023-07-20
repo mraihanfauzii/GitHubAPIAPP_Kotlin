@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity">
+    tools:context=".ui.AboutActivity">
 
     <TextView
         android:id="@+id/test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submission Akhir - Android Fundamental Dicoding"
+        android:text="@string/submission_akhir_android_fundamental_dicoding"
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:paddingBottom="8dp"
-        android:text="Dibuat oleh :"
+        android:text="@string/dibuat_oleh"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/profile_image"
         app:layout_constraintEnd_toEndOf="@+id/profile_image"
@@ -53,7 +53,7 @@
         android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Muhammad Raihan Fauzi"
+        android:text="@string/muhammad_raihan_fauzi"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="muhammad.raihan.fauzi@gmail.com"
+        android:text="@string/muhammad_raihan_fauzi_gmail_com"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/profile_name"

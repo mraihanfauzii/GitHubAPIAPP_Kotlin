@@ -15,6 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String","KEY",'"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"')
     }
 
     buildTypes {
@@ -32,6 +33,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
 }
 

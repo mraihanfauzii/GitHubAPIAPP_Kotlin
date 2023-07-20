@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalaplikasiandroid.room
+package com.bangkit.submissionfundamentalaplikasiandroid.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.submissionfundamentalaplikasiandroid.UserAdapter
-import com.bangkit.submissionfundamentalaplikasiandroid.detailuser.DetailUserActivity
+import com.bangkit.submissionfundamentalaplikasiandroid.R
+import com.bangkit.submissionfundamentalaplikasiandroid.adapter.UserAdapter
 import com.bangkit.submissionfundamentalaplikasiandroid.model.User
+import com.bangkit.submissionfundamentalaplikasiandroid.viewmodel.FavoriteViewModel
+import com.bangkit.submissionfundamentalaplikasiandroid.room.UserFavorite
 
 class FavoriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoriteBinding
@@ -21,19 +23,21 @@ class FavoriteActivity : AppCompatActivity() {
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Favorite"
+        showLoading(true)
+
+        supportActionBar?.title = getString(R.string.favorite)
 
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
 
-        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+        viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
 
         adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
                 Intent(this@FavoriteActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
                     it.putExtra(DetailUserActivity.EXTRA_ID, data.id)
-                    it.putExtra(DetailUserActivity.EXTRA_PROFILEPICTURE, data.avatar_url)
+                    it.putExtra(DetailUserActivity.EXTRA_PROFILE_PICTURE, data.avatar_url)
                     startActivity(it)
                 }
             }
@@ -46,6 +50,7 @@ class FavoriteActivity : AppCompatActivity() {
         }
         viewModel.getUserFavorite()?.observe(this) {
             if (it != null) {
+                showLoading(false)
                 val list = mapList(it)
                 adapter.setListUsers(list)
             }

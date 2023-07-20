@@ -1,4 +1,4 @@
-package com.bangkit.submissionfundamentalaplikasiandroid
+package com.bangkit.submissionfundamentalaplikasiandroid.ui
 
 import android.app.SearchManager
 import android.content.Context
@@ -12,14 +12,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.submissionfundamentalaplikasiandroid.detailuser.DetailUserActivity
+import com.bangkit.submissionfundamentalaplikasiandroid.R
+import com.bangkit.submissionfundamentalaplikasiandroid.adapter.UserAdapter
 import com.bangkit.submissionfundamentalaplikasiandroid.model.User
 import com.bangkit.submissionfundamentalaplikasiandroid.databinding.ActivityMainBinding
-import com.bangkit.submissionfundamentalaplikasiandroid.room.FavoriteActivity
-import com.bangkit.submissionfundamentalaplikasiandroid.setting.Setting
-import com.bangkit.submissionfundamentalaplikasiandroid.setting.SettingActivity
+import com.bangkit.submissionfundamentalaplikasiandroid.utils.Setting
+import com.bangkit.submissionfundamentalaplikasiandroid.viewmodel.GithubViewModel
 
-class MainActivity() : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: GithubViewModel
@@ -30,12 +30,11 @@ class MainActivity() : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "GithubAPIApp"
+        supportActionBar?.title = getString(R.string.githubapiapp)
 
-        viewModel = ViewModelProvider(
-            this,
+        viewModel = ViewModelProvider(this,
             GithubViewModel.Factory(Setting(this))
-        ).get(GithubViewModel::class.java)
+        )[GithubViewModel::class.java]
 
         viewModel.getSetting().observe(this) {
             if (it) {
@@ -53,7 +52,7 @@ class MainActivity() : AppCompatActivity() {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
                     it.putExtra(DetailUserActivity.EXTRA_ID, data.id)
-                    it.putExtra(DetailUserActivity.EXTRA_PROFILEPICTURE, data.avatar_url)
+                    it.putExtra(DetailUserActivity.EXTRA_PROFILE_PICTURE, data.avatar_url)
                     startActivity(it)
                 }
             }
@@ -61,14 +60,14 @@ class MainActivity() : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
-        ).get(GithubViewModel::class.java)
+        )[GithubViewModel::class.java]
 
         binding.apply {
             rvUser.layoutManager = LinearLayoutManager(this@MainActivity)
             rvUser.setHasFixedSize(true)
             rvUser.adapter = adapter
         }
-        viewModel.getSearhUser().observe(this) {
+        viewModel.getSearchUser().observe(this) {
             if (it != null) {
                 adapter.setListUsers(it)
                 if (adapter.itemCount < 1) {

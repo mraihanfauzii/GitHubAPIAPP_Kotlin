@@ -16,13 +16,13 @@
         android:theme="@style/Theme.SubmissionFundamentalAplikasiAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".setting.SettingActivity"
+            android:name=".ui.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".room.FavoriteActivity"
+            android:name=".ui.FavoriteActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".ui.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,13 +31,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".ui.AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".detailuser.DetailUserActivity"
+            android:name=".ui.DetailUserActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false" />
     </application>
 

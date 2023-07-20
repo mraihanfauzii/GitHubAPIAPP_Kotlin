@@ -1,8 +1,11 @@
-package com.bangkit.submissionfundamentalaplikasiandroid.room
+package com.bangkit.submissionfundamentalaplikasiandroid.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.bangkit.submissionfundamentalaplikasiandroid.room.UserDatabase
+import com.bangkit.submissionfundamentalaplikasiandroid.room.UserFavorite
+import com.bangkit.submissionfundamentalaplikasiandroid.room.UserFavoriteDAO
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
 

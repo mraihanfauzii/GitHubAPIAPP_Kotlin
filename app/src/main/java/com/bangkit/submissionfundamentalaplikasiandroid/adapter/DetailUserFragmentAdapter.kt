@@ -1,12 +1,12 @@
-package com.bangkit.submissionfundamentalaplikasiandroid
+package com.bangkit.submissionfundamentalaplikasiandroid.adapter
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.bangkit.submissionfundamentalaplikasiandroid.detailuser.UserFollowersFragment
-import com.bangkit.submissionfundamentalaplikasiandroid.detailuser.UserFollowingFragment
+import com.bangkit.submissionfundamentalaplikasiandroid.ui.UserFollowersFragment
+import com.bangkit.submissionfundamentalaplikasiandroid.ui.UserFollowingFragment
 
 class DetailUserFragmentAdapter(fm: FragmentManager, lifecycle: Lifecycle, data: Bundle) :
     FragmentStateAdapter(fm, lifecycle) {
@@ -25,7 +25,7 @@ class DetailUserFragmentAdapter(fm: FragmentManager, lifecycle: Lifecycle, data:
             0 -> fragment = UserFollowersFragment()
             1 -> fragment = UserFollowingFragment()
         }
-        fragment?.arguments = this.fragmentBundle
+        fragment.arguments = this.fragmentBundle
         return fragment
     }
 }

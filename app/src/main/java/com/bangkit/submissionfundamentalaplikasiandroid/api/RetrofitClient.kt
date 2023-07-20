@@ -1,5 +1,6 @@
 package com.bangkit.submissionfundamentalaplikasiandroid.api
 
+import com.bangkit.submissionfundamentalaplikasiandroid.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -9,7 +10,7 @@ object RetrofitClient {
     private val authInterceptor = Interceptor { chain ->
         val req = chain.request()
         val requestHeaders = req.newBuilder()
-            .addHeader("Authorization", "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")
+            .addHeader("Authorization", BuildConfig.KEY)
             .build()
         chain.proceed(requestHeaders)
     }
